@@ -39,7 +39,6 @@ p {
 	padding: 5px;
 	right: calc(-40vw + 50px);
 	background: var(--dark);
-	list-style-type: none;
 	-webkit-font-smoothing: antialiased;
 	transition: transform 0.5s ease-in-out;
 }
@@ -87,9 +86,13 @@ p {
     list-style-type: none;
 }
 
+.nav a {
+    text-decoration: none;
+    color: white;
+}
+
 .nav > li {
     font-size: x-large;
-    
 }
 
 /*
@@ -131,6 +134,7 @@ p {
 
 .socials:hover {
     color: var(--primary);
+    transition: 0.3s;
 }
 
 .button-row{
@@ -148,7 +152,8 @@ p {
 }
 
 .link-button:hover {
-    background-color: var(--secondary)
+    background-color: var(--secondary);
+    transition: 0.3s;
 }
 
 .main {
