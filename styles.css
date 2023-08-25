@@ -95,6 +95,16 @@ p {
     font-size: x-large;
 }
 
+.nav li {
+    padding: 0px 10px;
+    width: fit-content;
+}
+
+.nav li:hover {
+    background: var(--teal-dark);
+    transition: 0.3s;
+}
+
 /*
   Home page
 */
@@ -143,12 +153,14 @@ p {
 }
 
 .link-button {
+    font-family: 'Raleway', sans-serif;
     background-color: var(--primary);
     color: white;
     text-decoration: none;
-    border-radius: 1px;
-    padding: 10px;
+    border-radius: 5px;
+    padding: 10px 20px;
     margin-right: 10px;
+    width: fit-content;
 }
 
 .link-button:hover {
@@ -167,5 +179,78 @@ p {
 }
 
 /*
+  Resume page
+*/
+
+.resume-content {
+    align-self: center;
+}
+
+.profile .link-button {
+    align-self: center;
+}
+
+.profile p {
+    text-align: center;
+}
+
+/*
   Projects page
 */
+
+footer, footer *{
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: x-large;
+    color: var(--dark);
+}
+
+footer i {
+    font-size: xx-large;
+}
+
+#footer-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.scrolling-main { 
+    scroll-snap-type: y mandatory;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+ }
+ 
+.section { 
+    position: relative;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    margin-bottom: 200px;
+    width: calc(100vw - 50px);
+    text-align: center;
+}
+ 
+@media (min-height: 30em) { 
+    .section { height: 100vh; } 
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.card {
+    width: 30%;
+}
+
+.grid img {
+    width: 100%;
+}

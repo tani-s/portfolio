@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/3df29fd1df.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="scrolling-main">
+        <div class="section">
+            <div class="content" id="intro">
+                <h1>Projects</h1>
+                <p>Here, I'll showcase some of the projects that best demonstrate my skillset. </p>
+                <br>
+                <a class="link-button" href="#dev">Development work</a>
+                <a class="link-button" href="#design">Design work</a>
+            </div>
+        </div>
+           
+        <div class="section">
+            <div class="content" id="dev">
+                <h1>Development projects</h1>
+                 
+                <div class="grid">
+                    <div class="card">
+                        <img src="projects/project_images/mood_music.png">
+                        <h2>Mood Music</h2>
+                        <p class="description">For an independent study at Northwestern, I worked on a team of five to create a website that recommends songs based on your mood.</p>
+                    </div>
+                 
+                    <div class="card">
+                        <img src="projects/project_images/spacey_jump.png">
+                        <h2>Spacey Jump</h2>
+                        <p class="description">
+                            Spacey Jump is a Unity project I made for my Game Design and Development class at Northwestern. It's available to play on my GitHub, linked here!</p>
+                    </div>
+                 
+                
+                    <div class="card">
+                        <img src="projects/project_images/atomic_design.png">
+                        <h2>Atomically Designed Checkout Flow</h2>
+                        <p class="description">As a Software Engineer Intern at Intuit, my 8-week project was to use atomic design to create new components for Intuit's commerce platform using React and TypeScript.</p>
+                    </div>
+                 
+                
+                    <div class="card">
+                        <img src="projects/project_images/whisper_space.png">
+                        <h2>Whisper Space</h2>
+                        <p class="description">For an independent study I completed in Winter 2020, I worked on a team of 7 to create an interactive chatbot using AWS Lex.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="content" id="design">
+                <h1>Design projects</h1>
+
+                <div class="grid">
+                    <div class="card">
+                        <img src="projects/project_images/nurj.png">
+                        <h2>Magazine Design (NURJ)</h2>
+                        <p class="description"></p>
+                    </div>
+
+                    <div class="card">
+                        <img src="projects/project_images/protocols.png">
+                        <h2>Protocols App</h2>
+                        <p class="description"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <footer>
+        <h4 id="footer-text">Scroll to continue</h4>
+        <button onclick="scrollToNext()" id="footer-button"><i class="fa-solid fa-angle-down"></i></button>
+    </footer>
+
+    <button class="menu-toggle" onclick="toggleMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </button>
+    <div id="menu">
+        <div id="menu-content" style="display: none">
+            <ul class="nav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/projects.html">Projects</a></li>
+                <ul class="projects-nav">
+                    <li><a href="/projects.html#dev">Development work</a></li>
+                    <ul class="dev-nav">
+                        <li>Mood Music</li>
+                        <li>Spacey Jump</li>
+                        <li>Atomic Design Web Components</li>
+                        <li>Whisper Space</li>
+                    </ul>
+                    <li><a href="/projects.html#design">Design work</a></li>
+                    <ul class="design-nav">
+                        <li>Magazine design (NURJ)</li>
+                        <li>App prototyping (Protocols)</li>
+                    </ul>
+                </ul>
+                <li><a href="/resume.html">Resume</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+
+<script>
+    function toggleMenu(x) {
+        x.classList.toggle("open");
+        document.getElementById("menu").classList.toggle("open")
+        
+        var content = document.getElementById("menu-content")
+        content.style.display = content.style.display === 'none' ? '' : 'none'
+    }
+
+    function scrollToNext() {
+        var intro = document.getElementById("intro")
+        var dev = document.getElementById("dev")
+        var design = document.getElementById("design")
+
+        if (elementIsVisible(intro)) {
+            dev.scrollIntoView({behavior: 'smooth'})
+            return
+        }
+
+        if (elementIsVisible(dev)) {
+            design.scrollIntoView({behavior: 'smooth'})
+            return
+        }
+
+        if (elementIsVisible(design)) {
+            intro.scrollIntoView({behavior: 'smooth'})
+            return
+        }
+    }
+
+    function elementIsVisible(el) {
+        var rect = el.getBoundingClientRect();
+
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /* or $(window).height() */
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
+        );
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+        if(entries[0].isIntersecting === true) {
+            document.getElementById("footer-text").innerText = "Scroll to top"
+            document.getElementById("footer-button").innerHTML = `<i class="fa-solid fa-angle-up"></i>`
+        }
+        else {
+            document.getElementById("footer-text").innerText = "Scroll to continue"
+            document.getElementById("footer-button").innerHTML = `<i class="fa-solid fa-angle-down"></i>`
+        }
+            
+    }, { threshold: [0] });
+
+    observer.observe(document.getElementById("design"));
+</script>

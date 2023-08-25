@@ -1,0 +1,33 @@
+As a Software Engineer Intern at Intuit, my 8-week project was to use atomic design to create new components for Intuit's commerce platform using React and TypeScript. After designing and creating the components, I created an end-to-end checkout flow with them to demonstrate how they could be used to develop entire experiences quickly and easily.
+
+Here is an overview of the atomic design principles and how they applied to this project. 
+Atomic design is a methodology for design systems that focuses on five levels that build upon each other. Atoms combine to make molecules, which combine to make organisms, which make templates, which make pages. 
+In this case, the "page" that I was building toward was the checkout experience. Smaller atoms and molecules made up almost every part of the checkout flow. 
+
+
+I used four atoms in this project: Card, CardBrands, QuantityDropField, and Totals. 
+Card is a very versatile component that displays a title and body. The styling is completely customizable, but the default uses some padding and a light border, and fills the width of the parent element.
+CardBrands displays different credit card brands and can display one or many, with a particular card highlighted. This is mostly useful for payment experiences.
+QuantityDropField takes a callback function as a prop and calls it when the quantity is changed. In this experience, it was used to change the quantity of items in a cart, but can easily be used in other experiences, too.
+Totals takes data from the Intuit Commerce Platform and displays the breakdown of the total cost. Like the other atoms, it can be styled any way the consumer desires.
+
+Molecules
+I created 2 molecules for this experience: LineItemEdit and ViewModeComponent.
+ViewModeComponent is very useful to the checkout experience. It consumes CardBrands and Card to display information given by the Intuit Commerce Platform. It's used in checkout review to display information after the user has entered it.
+LineItemEdit takes information from the Intuit Commerce Platform and displays a single line item in edit mode, as one would see in a cart. It consumes QuantityDropField. 
+
+
+Organisms
+I created 2 organisms for this experience: CartEdit and CartView. Both components display items from the cart using other components. 
+CartEdit displays the information in edit mode, where the user can change the quantity of different items. It consumes LineItemEdit.
+ CartView displays the information in view mode, alongside the total cost of all of the items if desired. It consumes Totals and a LineItem component in view mode.
+Templates
+For the most part, I implemented templates alongside the actual "page" level in the checkout experience. There were four templates used: Cart Review, Customer Information, Information Review, and Order Confirmation.
+In Cart Review, the user sees the cart in edit mode and can make final adjustments to the item in their cart. It consumes CartEdit.
+In Customer Information, the user enters their billing, shipping, and payment data. It consumes CartView and an information form.
+In Information Review, the user can see all of their information in view mode and change it or place their order. It consumes Card, CartView and ViewModeComponent.
+In Order Confirmation, the user sees their order number and the information they used to place the order. It consumes ViewModeComponent and Card.
+
+These templates make up the whole experience, shown below.
+
+With just a bit of styling, the components can be combined to make experiences easily and efficiently. 
